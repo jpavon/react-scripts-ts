@@ -254,7 +254,7 @@ module.exports = {
               {
                 loader: 'sass-loader',
                 options: {
-                  includePaths: [paths.appSrc + './src/styles', paths.appSrc + './src/components']
+                  includePaths: [paths.appSrc + '/src/styles', paths.appSrc + '/src/components']
                 }
               }
             ],
