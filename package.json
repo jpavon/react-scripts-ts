@@ -1,14 +1,14 @@
 {
-  "name": "react-scripts-ts-scss",
+  "name": "react-scripts-ts",
   "version": "0.2.0",
   "description": "Configuration and scripts for Create React App.",
-  "repository": "jpavon/react-scripts-ts-scss",
+  "repository": "jpavon/react-scripts-ts",
   "license": "BSD-3-Clause",
   "engines": {
     "node": ">=6"
   },
   "bugs": {
-    "url": "https://github.com/jpavon/react-scripts-ts-scss/issues"
+    "url": "https://github.com/jpavon/react-scripts-ts/issues"
   },
   "files": [
     "bin",
