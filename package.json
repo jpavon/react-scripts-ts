@@ -1,6 +1,6 @@
 {
-  "name": "react-scripts-ts",
-  "version": "0.2.2",
+  "name": "@jpavon/react-scripts-ts",
+  "version": "0.2.3",
   "description": "Configuration and scripts for Create React App.",
   "repository": "jpavon/react-scripts-ts",
   "license": "BSD-3-Clause",
@@ -35,8 +35,8 @@
     "fs-extra": "3.0.1",
     "html-webpack-plugin": "2.29.0",
     "jest": "22.1.4",
-    "object-assign": "4.1.1",
     "node-sass": "^4.8.3",
+    "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "3.2.0",
     "postcss-loader": "2.0.8",
     "promise": "8.0.1",
@@ -51,6 +51,7 @@
     "tsconfig-paths-webpack-plugin": "^2.0.0",
     "tslint": "^5.7.0",
     "tslint-react": "^3.2.0",
+    "typescript": "^2.7.1",
     "uglifyjs-webpack-plugin": "^1.1.8",
     "url-loader": "0.6.2",
     "webpack": "^3.11.0",
@@ -60,8 +61,7 @@
   },
   "devDependencies": {
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "typescript": "^2.7.1"
+    "react-dom": "^15.5.4"
   },
   "peerDependencies": {
     "typescript": "2.x"
