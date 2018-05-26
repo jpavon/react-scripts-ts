@@ -1,15 +1,34 @@
+# react-scripts-ts
 
+Fork of react-script-ts (https://github.com/wmonk/create-react-app-typescript) with added features.
 
-# react-scripts
 
 ### Added features
 
 - sass-loader
 
----
+### Creating a new project
 
-This package includes scripts and configuration used by [Create React App](https://github.com/facebookincubator/create-react-app).<br>
-Please refer to its documentation:
+```
+npx create-react-app my-app --scripts-version=@jpavon/react-scripts-ts
+cd my-app/
+yarn start
+```
+(npx comes with npm 5.2+ and higher)
 
-* [Getting Started](https://github.com/facebookincubator/create-react-app/blob/master/README.md#getting-started) – How to create a new app.
-* [User Guide](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md) – How to develop apps bootstrapped with Create React App.
+### If you have a project already using create-react-app
+
+```
+yarn add @jpavon/react-scripts-ts
+```
+
+Change your package.json configuration to use react-scripts-ts
+
+```
+"scripts": {
+  "start": "react-scripts-ts start",
+  "build": "react-scripts-ts build",
+  "test": "react-scripts-ts test --env=jsdom",
+  "eject": "react-scripts-ts eject"
+},
+```
