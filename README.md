@@ -3,11 +3,11 @@
 Fork of react-script-ts (https://github.com/wmonk/create-react-app-typescript) with added features.
 
 
-### Added features
+## Added features
 
 - sass-loader
 
-### Creating a new project
+## Creating a new project
 
 ```
 npx create-react-app my-app --scripts-version=@jpavon/react-scripts-ts
@@ -16,7 +16,7 @@ yarn start
 ```
 (npx comes with npm 5.2+ and higher)
 
-### If you have a project already using create-react-app
+## If you have a project already using create-react-app
 
 ```
 yarn add @jpavon/react-scripts-ts
