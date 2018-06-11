@@ -181,7 +181,7 @@ module.exports = {
                   // disable type checker - we will use it in fork plugin
                   useCache: true,
                   reportFiles: [
-                      "src/**/*.{ts,tsx}"
+                    "src/**/*.{ts,tsx}"
                   ],
                   forceIsolatedModules: true
                 },
