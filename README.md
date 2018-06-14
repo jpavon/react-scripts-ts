@@ -5,7 +5,8 @@ Fork of react-script-ts (https://github.com/wmonk/create-react-app-typescript) w
 
 ## Added features
 
-- sass-loader
+- Faster typescript and tslint compiles
+- Sass
 
 ## Creating a new project
 
