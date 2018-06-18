@@ -1,12 +1,15 @@
 # react-scripts-ts
 
-Fork of react-script-ts (https://github.com/wmonk/create-react-app-typescript) with added features.
+[![npm version](https://badge.fury.io/js/%40jpavon%2Freact-scripts-ts.svg)](https://badge.fury.io/js/%40jpavon%2Freact-scripts-ts)
+
+Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) with added features.
 
 
 ## Added features
 
 - Faster typescript and tslint compiles
 - Sass
+- Import .svg files as react components using react-svg-loader
 
 ## Creating a new project
 
