@@ -285,7 +285,7 @@ module.exports = {
                     {
                       loader: 'sass-loader',
                       options: {
-                        includePaths: [paths.appSrc + '/styles', paths.appSrc + '/components']
+                        includePaths: [paths.appSrc]
                       }
                     }
                   ],
@@ -298,6 +298,7 @@ module.exports = {
           // Svgs
           {
             test: /\.svg$/,
+            issuer: /\.tsx?$/,
             use: [
               require.resolve('babel-loader'),
               {

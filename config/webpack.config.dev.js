@@ -226,7 +226,7 @@ module.exports = {
               {
                 loader: require.resolve('css-loader'),
                 options: {
-                  importLoaders: 1,
+                  importLoaders: 1
                 },
               },
               {
@@ -252,7 +252,7 @@ module.exports = {
               {
                 loader: 'sass-loader',
                 options: {
-                  includePaths: [paths.appSrc + '/styles', paths.appSrc + '/components']
+                  includePaths: [paths.appSrc]
                 }
               }
             ],
@@ -260,6 +260,7 @@ module.exports = {
           // Svgs
           {
             test: /\.svg$/,
+            issuer: /\.tsx?$/,
             use: [
               require.resolve('babel-loader'),
               {
@@ -329,7 +330,7 @@ module.exports = {
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
     }),
-    // new HardSourceWebpackPlugin()
+    new HardSourceWebpackPlugin()
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
