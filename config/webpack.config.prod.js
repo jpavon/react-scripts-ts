@@ -118,7 +118,6 @@ module.exports = {
         .replace(/\\/g, '/'),
   },
   optimization: {
-    concatenateModules: false,
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
