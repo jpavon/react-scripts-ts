@@ -292,20 +292,18 @@ module.exports = {
               },
             ],
           },
-          // Compile .tsx?
+          // Compile .tsx
           {
-            test: /\.(ts|tsx)$/,
-            include: paths.appSrc,
-            use: [
-              {
-                loader: require.resolve('awesome-typescript-loader'),
-                options: {
-                  reportFiles: [
-                    paths.appSrc + '/**/*.{ts,tsx}'
-                  ],
-                },
-              },
-            ],
+            test: /\.tsx?$/,
+            include: paths.srcPaths,
+            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            use: [{
+              loader: require.resolve('ts-loader'),
+              options: {
+                // enable type checker
+                transpileOnly: false
+              }
+            }]
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.

@@ -21,8 +21,8 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const TsCheckerWebpackPlugin = require('ts-checker-webpack-plugin');
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
@@ -267,24 +267,18 @@ module.exports = {
               },
             ],
           },
-
           // Compile .tsx
           {
-            test: /\.(ts|tsx)$/,
-            include: paths.appSrc,
-            use: [
-              {
-                loader: require.resolve('awesome-typescript-loader'),
-                options: {
-                  // disable type checker - we will use it in fork plugin
-                  useCache: true,
-                  reportFiles: [
-                    paths.appSrc + '/**/*.{ts,tsx}'
-                  ],
-                  forceIsolatedModules: true
-                },
-              },
-            ],
+            test: /\.tsx?$/,
+            include: paths.srcPaths,
+            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            use: [{
+              loader: require.resolve('ts-loader'),
+              options: {
+                // disable type checker - we will use it in fork plugin
+                transpileOnly: true
+              }
+            }]
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -393,11 +387,11 @@ module.exports = {
     // https://github.com/jmblog/how-to-optimize-momentjs-with-webpack
     // You can remove this if you don't use Moment.js:
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-    new TsCheckerWebpackPlugin({
+    new ForkTsCheckerWebpackPlugin({
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
     }),
-    new HardSourceWebpackPlugin()
+    // new HardSourceWebpackPlugin()
   ],
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
