@@ -25,9 +25,9 @@
     "@babel/preset-env": "^7.0.0-beta.51",
     "@babel/preset-react": "^7.0.0-beta.51",
     "@babel/preset-stage-0": "^7.0.0-beta.51",
-    "@babel/runtime": "7.0.0-beta.46",
+    "@babel/runtime": "^7.0.0-beta.51",
     "@svgr/webpack": "^2.0.0",
-    "autoprefixer": "8.5.0",
+    "autoprefixer": "^8.6.3",
     "awesome-typescript-loader": "^5.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "8.2.3",
@@ -37,7 +37,7 @@
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
     "css-loader": "0.28.11",
-    "dotenv": "5.0.1",
+    "dotenv": "^6.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "4.19.1",
     "eslint-config-react-app": "^2.1.0",
@@ -48,7 +48,7 @@
     "eslint-plugin-react": "7.8.2",
     "file-loader": "1.1.11",
     "fork-ts-checker-webpack-plugin": "^0.4.2",
-    "fs-extra": "5.0.0",
+    "fs-extra": "^6.0.1",
     "graphql": "0.13.2",
     "graphql-tag": "2.9.2",
     "hard-source-webpack-plugin": "^0.8.1",
@@ -66,10 +66,9 @@
     "raf": "3.4.0",
     "react-dev-utils": "6.0.0-next.3e165448",
     "react-svg-loader": "^2.1.0",
-    "resolve": "1.6.0",
-    "sass-loader": "7.0.1",
+    "resolve": "^1.8.1",
+    "sass-loader": "^7.0.3",
     "style-loader": "0.21.0",
-    "svgr": "1.9.2",
     "sw-precache-webpack-plugin": "0.11.5",
     "thread-loader": "1.1.5",
     "ts-checker-webpack-plugin": "^0.3.0",
@@ -83,7 +82,7 @@
     "url-loader": "1.0.1",
     "webpack": "^4.12.0",
     "webpack-dev-server": "^3.1.4",
-    "webpack-manifest-plugin": "2.0.2",
+    "webpack-manifest-plugin": "^2.0.3",
     "whatwg-fetch": "2.0.4"
   },
   "devDependencies": {
@@ -91,6 +90,6 @@
     "react-dom": "^16.3.2"
   },
   "optionalDependencies": {
-    "fsevents": "1.2.0"
+    "fsevents": "^1.2.4"
   }
 }
