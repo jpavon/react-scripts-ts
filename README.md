@@ -7,9 +7,10 @@ Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) 
 ## New features
 
 - Webpack 4
-- Faster typescript and tslint compiles
+- Compile TypeScript and TSLint faster
 - Sass
-- Import .svg files as react components
+- Sass/Css Modules
+- Import SVG files as React components
 
 ## Creating a new project
 
