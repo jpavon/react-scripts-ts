@@ -172,6 +172,11 @@ module.exports = {
       new TsconfigPathsPlugin({ configFile: paths.appTsConfig }),
     ],
   },
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
+  },
   module: {
     strictExportPresence: true,
     rules: [
@@ -268,17 +273,51 @@ module.exports = {
             ],
           },
           // Compile .tsx
+          // {
+          //     test: /\.tsx?$/,
+          //     use: [
+          //         {
+          //             loader: require.resolve('thread-loader'),
+          //             options: {
+          //                 // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+          //                 workers: require('os').cpus().length - 1,
+          //             },
+          //         },
+          //         {
+          //             loader: require.resolve('ts-loader'),
+          //             options: {
+          //               transpileOnly: true,
+          //               happyPackMode: true
+          //             }
+          //         }
+          //     ]
+          // },
           {
             test: /\.tsx?$/,
-            include: paths.srcPaths,
             exclude: [/[/\\\\]node_modules[/\\\\]/],
-            use: [{
-              loader: require.resolve('ts-loader'),
-              options: {
-                // disable type checker - we will use it in fork plugin
-                transpileOnly: true
-              }
-            }]
+            use: [
+              {
+                loader: require.resolve('awesome-typescript-loader'),
+                options: {
+                  silent: true,
+                  useCache: true,
+                  reportFiles: [
+                    paths.appSrc + '/**/*.{ts,tsx}'
+                  ],
+                  forceIsolatedModules: true,
+                  useBabel: true,
+                  babelOptions: {
+                    babelrc: false,
+                    compact: true,
+                    presets: [
+                      require.resolve('@babel/preset-react'),
+                    ],
+                    highlightCode: true,
+                  },
+                  babelCore: require.resolve('@babel/core'),
+                },
+              },
+            ]
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.

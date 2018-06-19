@@ -293,17 +293,46 @@ module.exports = {
             ],
           },
           // Compile .tsx
+          // {
+          //   test: /\.tsx?$/,
+          //   include: paths.srcPaths,
+          //   exclude: [/[/\\\\]node_modules[/\\\\]/],
+          //   use: [
+          //     {
+          //       loader: require.resolve('ts-loader'),
+          //       options: {
+          //         // enable type checker
+          //         transpileOnly: false
+          //       }
+          //     }
+          //   ]
+          // },
           {
             test: /\.tsx?$/,
-            include: paths.srcPaths,
             exclude: [/[/\\\\]node_modules[/\\\\]/],
-            use: [{
-              loader: require.resolve('ts-loader'),
-              options: {
-                // enable type checker
-                transpileOnly: false
-              }
-            }]
+            use: [
+              {
+                loader: 'awesome-typescript-loader',
+                options: {
+                  silent: true,
+                  useCache: false,
+                  reportFiles: [
+                    paths.appSrc + '/**/*.{ts,tsx}'
+                  ],
+                  forceIsolatedModules: true,
+                  useBabel: true,
+                  babelOptions: {
+                    babelrc: false,
+                    compact: true,
+                    presets: [
+                      require.resolve('@babel/preset-react'),
+                    ],
+                    highlightCode: true,
+                  },
+                  babelCore: '@babel/core',
+                },
+              },
+            ]
           },
           // The notation here is somewhat confusing.
           // "postcss" loader applies autoprefixer to our CSS.
