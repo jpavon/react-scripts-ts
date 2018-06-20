@@ -109,7 +109,10 @@ module.exports = function(
     '@types/react',
     '@types/react-dom',
     '@types/jest',
-    'typescript',
+    'tslint',
+    'tslint-react',
+    'tslint-config-prettier',
+    'typescript'
   ];
 
   console.log(
