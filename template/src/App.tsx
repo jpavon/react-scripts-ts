@@ -8,7 +8,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <LogoSvg />
+          <LogoSvg className="App-logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
         <p className="App-intro">
