@@ -1,10 +1,12 @@
 # react-scripts-ts
 
+> *Note: Until 1.0.0 this project won't follow semver, there won't be many breaking changes, update at your own risk.*
+
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
 
 Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) with added features.
 
-## New features
+## Features
 
 - Webpack 4
 - Compile TypeScript and TSLint faster
@@ -30,8 +32,10 @@ yarn add @jpavon/react-scripts-ts
 Change your package.json configuration to use react-scripts-ts
 
 ```json
-"scripts": {
-  "start": "react-scripts-ts start",
-  "build": "react-scripts-ts build",
+{
+  "scripts": {
+    "start": "react-scripts-ts start",
+    "build": "react-scripts-ts build",
+  }
 }
 ```
