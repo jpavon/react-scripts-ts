@@ -177,41 +177,14 @@ module.exports = {
     // https://twitter.com/wSokra/status/969633336732905474
     // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
     splitChunks: {
-      chunks: 'all',
-      name: 'vendors',
-    },
-    // Keep the runtime chunk seperated to enable long term caching
-    // https://twitter.com/wSokra/status/969679223278505985
-    runtimeChunk: true,
+      chunks: 'all'
+    }
   },
   module: {
     strictExportPresence: true,
     rules: [
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
-
-      {
-        test: /\.(js|jsx|mjs)$/,
-        enforce: 'pre',
-        use: [
-          // {
-          //   options: {
-          //     formatter: eslintFormatter,
-          //     eslintPath: require.resolve('eslint'),
-          //     baseConfig: {
-          //       extends: [require.resolve('eslint-config-react-app')],
-          //     },
-          //     // @remove-on-eject-begin
-          //     ignore: false,
-          //     useEslintrc: false,
-          //     // @remove-on-eject-end
-          //   },
-          //   loader: require.resolve('eslint-loader'),
-          // },
-        ],
-        include: paths.srcPaths,
-        exclude: [/[/\\\\]node_modules[/\\\\]/],
-      },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -231,7 +204,7 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.srcPaths,
-            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            exclude: /[\\/]node_modules[\\/]/,
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
@@ -279,35 +252,16 @@ module.exports = {
               },
             ],
           },
-          // Compile .tsx
-          // {
-          //     test: /\.tsx?$/,
-          //     use: [
-          //         {
-          //             loader: require.resolve('thread-loader'),
-          //             options: {
-          //                 // there should be 1 cpu for the fork-ts-checker-webpack-plugin
-          //                 workers: require('os').cpus().length - 1,
-          //             },
-          //         },
-          //         {
-          //             loader: require.resolve('ts-loader'),
-          //             options: {
-          //               transpileOnly: true,
-          //               happyPackMode: true
-          //             }
-          //         }
-          //     ]
-          // },
+          // Compile .ts and .tsx
           {
             test: /\.tsx?$/,
-            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            include: paths.srcPaths,
+            exclude: /[\\/]node_modules[\\/]/,
             use: [
               {
                 loader: require.resolve('awesome-typescript-loader'),
                 options: {
-                  silent: true,
-                  useCache: true,
+                  transpileOnly: true,
                   reportFiles: [
                     paths.appSrc + '/**/*.{ts,tsx}'
                   ],
@@ -315,11 +269,10 @@ module.exports = {
                   useBabel: true,
                   babelOptions: {
                     babelrc: false,
-                    compact: true,
+                    compact: false,
                     presets: [
                       require.resolve('@babel/preset-react'),
                     ],
-                    highlightCode: true,
                   },
                   babelCore: require.resolve('@babel/core'),
                 },
@@ -376,9 +329,7 @@ module.exports = {
           {
             test: /\.svg$/,
             issuer: /\.tsx?$/,
-            use: [{
-              loader: require.resolve('@svgr/webpack')
-            }]
+            use: [require.resolve('@svgr/webpack')]
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.

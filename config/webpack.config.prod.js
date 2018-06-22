@@ -158,15 +158,17 @@ module.exports = {
       }),
       new OptimizeCSSAssetsPlugin(),
     ],
-    // // Automatically split vendor and commons
-    // // https://twitter.com/wSokra/status/969633336732905474
-    // // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+    // Use splitChunks when this issue is fixed:
+    // https://github.com/webpack/webpack/issues/7300
+
+    // Automatically split vendor and commons
+    // https://twitter.com/wSokra/status/969633336732905474
+    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
     // splitChunks: {
-    //   chunks: 'all',
-    //   name: 'vendors',
+    //   chunks: 'all'
     // },
-    // // Keep the runtime chunk seperated to enable long term caching
-    // // https://twitter.com/wSokra/status/969679223278505985
+    // Keep the runtime chunk seperated to enable long term caching
+    // https://twitter.com/wSokra/status/969679223278505985
     // runtimeChunk: true,
   },
   resolve: {
@@ -227,30 +229,6 @@ module.exports = {
       // Disable require.ensure as it's not a standard language feature.
       { parser: { requireEnsure: false } },
       {
-        test: /\.(js|jsx|mjs)$/,
-        enforce: 'pre',
-        // use: [
-        //   {
-        //     options: {
-        //       formatter: eslintFormatter,
-        //       eslintPath: require.resolve('eslint'),
-        //       // TODO: consider separate config for production,
-        //       // e.g. to enable no-console and no-debugger only in production.
-        //       baseConfig: {
-        //         extends: [require.resolve('eslint-config-react-app')],
-        //       },
-        //       // @remove-on-eject-begin
-        //       ignore: false,
-        //       useEslintrc: false,
-        //       // @remove-on-eject-end
-        //     },
-        //     loader: require.resolve('eslint-loader'),
-        //   },
-        // ],
-        include: paths.srcPaths,
-        exclude: [/[/\\\\]node_modules[/\\\\]/],
-      },
-      {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
         // back to the "file" loader at the end of the loader list.
@@ -268,7 +246,7 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             include: paths.srcPaths,
-            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            exclude: /[\\/]node_modules[\\/]/,
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
@@ -291,30 +269,16 @@ module.exports = {
               },
             ],
           },
-          // Compile .tsx
-          // {
-          //   test: /\.tsx?$/,
-          //   include: paths.srcPaths,
-          //   exclude: [/[/\\\\]node_modules[/\\\\]/],
-          //   use: [
-          //     {
-          //       loader: require.resolve('ts-loader'),
-          //       options: {
-          //         // enable type checker
-          //         transpileOnly: false
-          //       }
-          //     }
-          //   ]
-          // },
+          // Compile .ts and .tsx
           {
             test: /\.tsx?$/,
-            exclude: [/[/\\\\]node_modules[/\\\\]/],
+            include: paths.srcPaths,
+            exclude: /[\\/]node_modules[\\/]/,
             use: [
               {
-                loader: 'awesome-typescript-loader',
+                loader: require.resolve('awesome-typescript-loader'),
                 options: {
-                  silent: true,
-                  useCache: false,
+                  transpileOnly: false,
                   reportFiles: [
                     paths.appSrc + '/**/*.{ts,tsx}'
                   ],
@@ -326,9 +290,8 @@ module.exports = {
                     presets: [
                       require.resolve('@babel/preset-react'),
                     ],
-                    highlightCode: true,
                   },
-                  babelCore: '@babel/core',
+                  babelCore: require.resolve('@babel/core'),
                 },
               },
             ]
