@@ -1,20 +1,25 @@
 # react-scripts-ts
 
-> *Note: Until 1.0.0 this project won't follow semver, there won't be many breaking changes, update at your own risk.*
+> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
 
 Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) with added features.
 
+Found any problem or bug? Please [create a new issue](https://github.com/jpavon/react-scripts-ts/issues).
+
 ## Features
 
-- Webpack 4
-- Compile TypeScript and TSLint faster
-- Sass
-- Sass/Css Modules
-- Import SVG files as React components
+- [Webpack 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4) and [@babel/core](https://babeljs.io/docs/en/next/index.html)
+- Fast TypeScript compilation [awesome-typescript-loader](https://github.com/s-panferov/awesome-typescript-loader)
+- Type and lint errors on a separate process [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
+- Sass and Css Modules [css-modules](https://github.com/css-modules/css-modules)
+- Tranform SVG into React components [svgr](https://github.com/smooth-code/svgr)
+- Use `.js|.jsx` and `.ts|.tsx` files together.
 
-## Creating a new project
+## Add it to your project
+
+### New project
 
 ```bash
 npx create-react-app my-app --scripts-version=@jpavon/react-scripts-ts
@@ -23,7 +28,7 @@ yarn start
 ```
 (npx comes with npm 5.2+ and higher)
 
-## If you have a project already using create-react-app
+#### Already using create-react-app?
 
 ```bash
 yarn add @jpavon/react-scripts-ts
