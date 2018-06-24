@@ -10,12 +10,14 @@ Found any problem or bug? Please [create a new issue](https://github.com/jpavon/
 
 ## Features
 
-- [Webpack 4](https://medium.com/webpack/webpack-4-released-today-6cdb994702d4) and [@babel/core](https://babeljs.io/docs/en/next/index.html)
-- Fast TypeScript compilation [awesome-typescript-loader](https://github.com/s-panferov/awesome-typescript-loader)
-- Type and lint errors on a separate process [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
+- Webpack 4
+- TypeScript compilation [ts-loader](https://github.com/TypeStrong/ts-loader)
+- Type and tslint errors on a separate process [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 - Sass and Css Modules [css-modules](https://github.com/css-modules/css-modules)
 - Tranform SVG into React components [svgr](https://github.com/smooth-code/svgr)
 - Use `.js|.jsx` and `.ts|.tsx` files together.
+
+Check the [template files](template) for usage examples.
 
 ## Add it to your project
 
