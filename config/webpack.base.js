@@ -23,17 +23,18 @@ function getStyleLoader(options) {
 
   const miniCss = MiniCssExtractPlugin.loader;
 
-  const cssLoaderOptions = {
-    importLoaders: isSass ? 2 : 1
-  };
-  if (isModules) {
-    cssLoaderOptions.modules = true;
-    cssLoaderOptions.getLocalIdent = getCSSModuleLocalIdent;
-  }
   const cssLoader = {
     loader: require.resolve('css-loader'),
-    options: cssLoaderOptions
+    options: {
+      importLoaders: isSass ? 2 : 1
+    }
   };
+  if (isModules) {
+    // css-loader drop-in replacement to generate TypeScript typings
+    cssLoader.loader = require.resolve('@jpavon/typings-for-css-modules-loader');
+    cssLoader.options.modules = true;
+    cssLoader.options.getLocalIdent = getCSSModuleLocalIdent;
+  }
 
   const postCssLoader = {
     loader: require.resolve('postcss-loader'),

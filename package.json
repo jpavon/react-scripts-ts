@@ -26,6 +26,7 @@
     "@babel/preset-react": "^7.0.0-beta.51",
     "@babel/preset-stage-0": "^7.0.0-beta.51",
     "@babel/runtime": "^7.0.0-beta.51",
+    "@jpavon/typings-for-css-modules-loader": "^0.1.0",
     "@svgr/webpack": "^2.0.0",
     "autoprefixer": "^8.6.3",
     "awesome-typescript-loader": "^5.2.0",
