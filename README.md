@@ -16,6 +16,7 @@ Found any problem or bug? Please [create a new issue](https://github.com/jpavon/
 - TypeScript compilation [ts-loader](https://github.com/TypeStrong/ts-loader)
 - Type and tslint errors on a separate process [fork-ts-checker-webpack-plugin](https://github.com/Realytics/fork-ts-checker-webpack-plugin)
 - Sass and Css Modules [css-modules](https://github.com/css-modules/css-modules)
+- Generate TypeScript typings for CSS modules [typings-for-css-modules-loader](https://github.com/jpavon/typings-for-css-modules-loader)
 - Tranform SVG into React components [svgr](https://github.com/smooth-code/svgr)
 - Use `.js|.jsx` and `.ts|.tsx` files together.
 
