@@ -140,30 +140,14 @@ module.exports.loaders = [
   // Compile .tsx
   {
     test: /\.tsx?$/,
+    include: paths.srcPaths,
     exclude: [/[/\\\\]node_modules[/\\\\]/],
-    use: [
-      {
-        loader: require.resolve('awesome-typescript-loader'),
-        options: {
-          silent: true,
-          useCache: true,
-          reportFiles: [
-            paths.appSrc + '/**/*.{ts,tsx}'
-          ],
-          forceIsolatedModules: true,
-          useBabel: true,
-          babelOptions: {
-            babelrc: false,
-            compact: true,
-            presets: [
-              require.resolve('@babel/preset-react'),
-            ],
-            highlightCode: true,
-          },
-          babelCore: require.resolve('@babel/core'),
-        },
-      },
-    ]
+    use: [{
+      loader: require.resolve('ts-loader'),
+      options: {
+        transpileOnly: true
+      }
+    }]
   },
   // {
   //   test: /\.(jsx?)$/,
