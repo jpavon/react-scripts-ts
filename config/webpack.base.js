@@ -31,7 +31,7 @@ function getStyleLoader(options) {
   };
   if (isModules) {
     // css-loader drop-in replacement to generate TypeScript typings
-    cssLoader.loader = require.resolve('typings-for-css-modules-loader');
+    cssLoader.loader = require.resolve('@jpavon/typings-for-css-modules-loader');
     cssLoader.options.modules = true;
     cssLoader.options.getLocalIdent = getCSSModuleLocalIdent;
   }

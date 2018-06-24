@@ -834,6 +834,14 @@
     lodash "^4.17.5"
     to-fast-properties "^2.0.0"
 
+"@jpavon/typings-for-css-modules-loader@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@jpavon/typings-for-css-modules-loader/-/typings-for-css-modules-loader-0.1.0.tgz#f83d0b203aca1301855abd427a943b07c4f4db89"
+  dependencies:
+    colour "0.7.1"
+    graceful-fs "4.1.4"
+    loader-utils "0.2.16"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -7908,14 +7916,6 @@ typedarray@^0.0.6:
 typescript@^2.9.2:
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.9.2.tgz#1cbf61d05d6b96269244eb6a3bce4bd914e0f00c"
-
-typings-for-css-modules-loader@^1.7.0:
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/typings-for-css-modules-loader/-/typings-for-css-modules-loader-1.7.0.tgz#a9b5c5a0e19b719d616edfc72855ab47dedd00ae"
-  dependencies:
-    colour "0.7.1"
-    graceful-fs "4.1.4"
-    loader-utils "0.2.16"
 
 ua-parser-js@^0.7.18:
   version "0.7.18"
