@@ -142,94 +142,22 @@ module.exports.loaders = [
     test: /\.tsx?$/,
     include: paths.srcPaths,
     exclude: [/[/\\\\]node_modules[/\\\\]/],
-    use: [{
-      loader: require.resolve('ts-loader'),
-      options: {
-        transpileOnly: true
+    use: [
+      {
+        loader: require.resolve('thread-loader'),
+        options: {
+          poolTimeout: Infinity // keep workers alive for more effective watch mode
+        }
+      },
+      {
+        loader: require.resolve('ts-loader'),
+        options: {
+          transpileOnly: true,
+          happyPackMode: true
+        }
       }
-    }]
+    ]
   },
-  // {
-  //   test: /\.(jsx?)$/,
-  //   include: paths.srcPaths,
-  //   exclude: /[\\/]node_modules[\\/]/,
-  //   use: [
-  //     // This loader parallelizes code compilation, it is optional but
-  //     // improves compile time on larger projects
-  //     require.resolve('thread-loader'),
-  //     {
-  //       loader: require.resolve('babel-loader'),
-  //       options: {
-  //         // @remove-on-eject-begin
-  //         babelrc: false,
-  //         // @remove-on-eject-end
-  //         presets: [require.resolve('@babel/preset-react')],
-  //         // plugins: [
-  //         //   [require.resolve('babel-plugin-named-asset-import')]
-  //         // ],
-  //         compact: isProduction ? true : false,
-  //         cacheDirectory: isProduction ? false : true,
-  //         highlightCode: true
-  //       }
-  //     }
-  //   ]
-  // },
-  // {
-  //   test: /(\.jsx?$|\.tsx?$)/,
-  //   include: paths.srcPaths,
-  //   exclude: /[\\/]node_modules[\\/]/,
-  //   use: [
-  //     require.resolve('cache-loader'),
-  //     {
-  //       loader: require.resolve('thread-loader'),
-  //       options: {
-  //         poolTimeout: Infinity // keep workers alive for more effective watch mode
-  //       },
-  //     },
-  //     {
-  //       loader: require.resolve('babel-loader'),
-  //       options: {
-  //         // @remove-on-eject-begin
-  //         babelrc: false,
-  //         // @remove-on-eject-end
-  //         presets: [
-  //           require.resolve('@babel/preset-react'),
-  //           require.resolve('@babel/preset-typescript')
-  //         ],
-  //         // plugins: [
-  //         //   [require.resolve('babel-plugin-named-asset-import')]
-  //         // ],
-  //         compact: isProduction ? true : false,
-  //         cacheDirectory: isProduction ? false : true,
-  //         highlightCode: true
-  //       }
-  //     }
-  //   ]
-  // },
-  // {
-  //   test: /(\.jsx?$|\.tsx?$)/,
-  //   include: paths.srcPaths,
-  //   exclude: /[\\/]node_modules[\\/]/,
-  //   use: [
-  //     {
-  //       loader: require.resolve('awesome-typescript-loader'),
-  //       options: {
-  //         transpileOnly: isProduction ? false : true,
-  //         reportFiles: [paths.appSrc + '/**/*.{ts,tsx}'],
-  //         forceIsolatedModules: true,
-  //         useBabel: true,
-  //         babelOptions: {
-  //           babelrc: false,
-  //           compact: isProduction ? true : false,
-  //           presets: [
-  //             require.resolve('@babel/preset-react')
-  //           ]
-  //         },
-  //         babelCore: '@babel/core'
-  //       }
-  //     }
-  //   ]
-  // },
   // Css Loader
   getStyleLoader(),
   // Sass Loader
