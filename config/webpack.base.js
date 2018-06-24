@@ -77,7 +77,7 @@ function getStyleLoader(options) {
   };
 }
 
-module.exports = [
+module.exports.loaders = [
   // "url" loader works just like "file" loader but it also embeds
   // assets smaller than specified size as data URLs to avoid requests.
   {
@@ -91,7 +91,7 @@ module.exports = [
   {
     test: /\.(js|jsx|mjs)$/,
     include: paths.srcPaths,
-    exclude: /[\\/]node_modules[\\/]/,
+    exclude: [/[/\\\\]node_modules[/\\\\]/],
     use: [
       // This loader parallelizes code compilation, it is optional but
       // improves compile time on larger projects
@@ -104,37 +104,148 @@ module.exports = [
           // @remove-on-eject-end
           presets: [require.resolve('@babel/preset-react')],
           // plugins: [
-          //   [require.resolve('babel-plugin-named-asset-import')]
+          //   [
+          //     require.resolve('babel-plugin-named-asset-import'),
+          //   ],
           // ],
-          compact: isProduction ? true : false,
-          cacheDirectory: isProduction ? false : true,
+          // This is a feature of `babel-loader` for webpack (not Babel itself).
+          // It enables caching results in ./node_modules/.cache/babel-loader/
+          // directory for faster rebuilds.
+          cacheDirectory: true,
           highlightCode: true
         }
       }
     ]
   },
+  // Process any JS outside of the app with Babel.
+  // Unlike the application JS, we only compile the standard ES features.
   {
-    test: /\.tsx?$/,
-    include: paths.srcPaths,
-    exclude: /[\\/]node_modules[\\/]/,
+    test: /\.js$/,
     use: [
+      // This loader parallelizes code compilation, it is optional but
+      // improves compile time on larger projects
+      require.resolve('thread-loader'),
       {
-        loader: require.resolve('awesome-typescript-loader'),
+        loader: require.resolve('babel-loader'),
         options: {
-          transpileOnly: isProduction ? false : true,
-          reportFiles: [paths.appSrc + '/**/*.{ts,tsx}'],
-          forceIsolatedModules: true,
-          useBabel: true,
-          babelOptions: {
-            babelrc: false,
-            compact: isProduction ? true : false,
-            presets: [require.resolve('@babel/preset-react')]
-          },
-          babelCore: '@babel/core'
+          babelrc: false,
+          compact: false,
+          presets: [require.resolve('@babel/preset-react')],
+          cacheDirectory: true,
+          highlightCode: true
         }
       }
     ]
   },
+  // Compile .tsx
+  {
+    test: /\.tsx?$/,
+    exclude: [/[/\\\\]node_modules[/\\\\]/],
+    use: [
+      {
+        loader: require.resolve('awesome-typescript-loader'),
+        options: {
+          silent: true,
+          useCache: true,
+          reportFiles: [
+            paths.appSrc + '/**/*.{ts,tsx}'
+          ],
+          forceIsolatedModules: true,
+          useBabel: true,
+          babelOptions: {
+            babelrc: false,
+            compact: true,
+            presets: [
+              require.resolve('@babel/preset-react'),
+            ],
+            highlightCode: true,
+          },
+          babelCore: require.resolve('@babel/core'),
+        },
+      },
+    ]
+  },
+  // {
+  //   test: /\.(jsx?)$/,
+  //   include: paths.srcPaths,
+  //   exclude: /[\\/]node_modules[\\/]/,
+  //   use: [
+  //     // This loader parallelizes code compilation, it is optional but
+  //     // improves compile time on larger projects
+  //     require.resolve('thread-loader'),
+  //     {
+  //       loader: require.resolve('babel-loader'),
+  //       options: {
+  //         // @remove-on-eject-begin
+  //         babelrc: false,
+  //         // @remove-on-eject-end
+  //         presets: [require.resolve('@babel/preset-react')],
+  //         // plugins: [
+  //         //   [require.resolve('babel-plugin-named-asset-import')]
+  //         // ],
+  //         compact: isProduction ? true : false,
+  //         cacheDirectory: isProduction ? false : true,
+  //         highlightCode: true
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   test: /(\.jsx?$|\.tsx?$)/,
+  //   include: paths.srcPaths,
+  //   exclude: /[\\/]node_modules[\\/]/,
+  //   use: [
+  //     require.resolve('cache-loader'),
+  //     {
+  //       loader: require.resolve('thread-loader'),
+  //       options: {
+  //         poolTimeout: Infinity // keep workers alive for more effective watch mode
+  //       },
+  //     },
+  //     {
+  //       loader: require.resolve('babel-loader'),
+  //       options: {
+  //         // @remove-on-eject-begin
+  //         babelrc: false,
+  //         // @remove-on-eject-end
+  //         presets: [
+  //           require.resolve('@babel/preset-react'),
+  //           require.resolve('@babel/preset-typescript')
+  //         ],
+  //         // plugins: [
+  //         //   [require.resolve('babel-plugin-named-asset-import')]
+  //         // ],
+  //         compact: isProduction ? true : false,
+  //         cacheDirectory: isProduction ? false : true,
+  //         highlightCode: true
+  //       }
+  //     }
+  //   ]
+  // },
+  // {
+  //   test: /(\.jsx?$|\.tsx?$)/,
+  //   include: paths.srcPaths,
+  //   exclude: /[\\/]node_modules[\\/]/,
+  //   use: [
+  //     {
+  //       loader: require.resolve('awesome-typescript-loader'),
+  //       options: {
+  //         transpileOnly: isProduction ? false : true,
+  //         reportFiles: [paths.appSrc + '/**/*.{ts,tsx}'],
+  //         forceIsolatedModules: true,
+  //         useBabel: true,
+  //         babelOptions: {
+  //           babelrc: false,
+  //           compact: isProduction ? true : false,
+  //           presets: [
+  //             require.resolve('@babel/preset-react')
+  //           ]
+  //         },
+  //         babelCore: '@babel/core'
+  //       }
+  //     }
+  //   ]
+  // },
   // Css Loader
   getStyleLoader(),
   // Sass Loader
@@ -145,7 +256,7 @@ module.exports = [
   getStyleLoader({ sass: true, modules: true }),
   {
     test: /\.svg$/,
-    issuer: /\.(tsx?|jsx?)$/,
+    issuer: /\.tsx$/,
     use: [require.resolve('@svgr/webpack')]
   },
   {

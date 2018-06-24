@@ -1,10 +1,10 @@
 node_modules
 
-build
+template/build
+template/node_modules
+template/package.json
+template/yarn.lock
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-template/package.json
-template/yarn.lock
