@@ -5,7 +5,6 @@ body {
 }
 
 .App {
-  text-align: center;
 }
 
 .App-logo {
@@ -15,7 +14,7 @@ body {
 
 .App-header {
   background-color: #222;
-  padding: 20px;
+  padding: 2rem;
   color: white;
 }
 
@@ -24,6 +23,7 @@ body {
 }
 
 .App-intro {
+  margin: 2rem;
   font-size: large;
 }
 

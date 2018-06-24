@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 // Import .js files
-import welcomeMessage from './welcomeMessage';
+import welcomeMessage from 'welcomeMessage';
 // Import .jsx files
-import Welcome from './Welcome';
+import Welcome from 'Welcome';
 
 // Import SVG as React Component
 import LogoSvg from 'logo.svg';
@@ -14,9 +14,9 @@ import 'App.css';
 // Import css modules
 import fromCssModule from 'App.module.css';
 // Import sass
-import './App.scss';
+import 'App.scss';
 // Import sass modules
-import fromSassModule from './App.module.scss';
+import fromSassModule from 'App.module.scss';
 
 class App extends React.Component {
   public render() {
