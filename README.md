@@ -1,8 +1,10 @@
+![doroutine](template/src/logo.svg)
+
 # react-scripts-ts
 
-> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
-
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
+
+> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
 Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) with added features.
 
@@ -17,7 +19,7 @@ Found any problem or bug? Please [create a new issue](https://github.com/jpavon/
 - Tranform SVG into React components [svgr](https://github.com/smooth-code/svgr)
 - Use `.js|.jsx` and `.ts|.tsx` files together.
 
-Check the [template files](template) for usage examples.
+Check out the [template files](template) for usage examples.
 
 ## Add it to your project
 
