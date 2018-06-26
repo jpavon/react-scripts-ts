@@ -31,19 +31,20 @@ module.exports = (resolve, rootDir) => {
     testEnvironment: 'node',
     testURL: 'http://localhost',
     transform: {
-      '\\.(tsx?|js|jsx|mjs)$': resolve('config/jest/typescriptTransform.js')
+      '\\.(tsx?|js|jsx|mjs)$': resolve('config/jest/typescriptTransform.js'),
+      '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': resolve(
+        'config/jest/fileMock.js'
+      )
     },
     transformIgnorePatterns: [
       '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$'
     ],
     moduleNameMapper: {
       'react-native$': 'react-native-web',
-      '\\.(jpe?g|png)$': resolve('config/jest/emptyModule.js'),
-      '\\.(svg)$': resolve('config/jest/emptyReactClass.js'),
-      '\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy',
-      'ts-jest': resolve('node_modules/ts-jest')
+      '\\.(svg)$': resolve('config/jest/svgMock.js'),
+      '\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy'
     },
-    moduleDirectories: ['node_modules', 'src'],
+    modulePaths: [resolve('node_modules'), '<rootDir>/src'],
     moduleFileExtensions: [
       'web.ts',
       'ts',
