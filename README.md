@@ -46,7 +46,7 @@ Change your package.json configuration to use react-scripts-ts
   "scripts": {
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
-    "test": "react-scripts-ts test",
+    "test": "react-scripts-ts test --env=jsdom",
   }
 }
 ```
