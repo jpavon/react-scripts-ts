@@ -1,7 +1,12 @@
 const React = require('react');
 
-export default class extends React.Component {
-  render() {
-    return <svg {...this.props} />;
+module.exports = new Proxy(
+  {},
+  {
+    get: function getter(target, key) {
+      return function(props) {
+        return <svg {...props} />;
+      };
+    }
   }
-}
+);
