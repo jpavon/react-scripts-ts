@@ -4,9 +4,11 @@ module.exports = new Proxy(
   {},
   {
     get: function getter(target, key) {
-      return function(props) {
-        return <svg {...props} />;
-      };
+      return class extends React.Component {
+        render() {
+          return key
+        }
+      }
     }
   }
 );
