@@ -7,7 +7,7 @@ jobs:
     steps:
       - checkout
       - run: npm pack
-      - run: npx create-react-app ~/template/test-template --scripts-version=/home/circleci/template/jpavon-react-scripts-ts-0.6.6.tgz
+      - run: npx create-react-app ~/template/test-template --scripts-version=/home/circleci/template/jpavon-react-scripts-ts-0.7.0.tgz
       - run: cd ~/template/test-template && yarn test
 
   test-kitchensink:
@@ -17,7 +17,7 @@ jobs:
     steps:
       - checkout
       - run: npm pack
-      - run: E2E_TEST='true' npx create-react-app ~/kitchensink/test-kitchensink --scripts-version=/home/circleci/kitchensink/jpavon-react-scripts-ts-0.6.6.tgz --internal-testing-template=/home/circleci/kitchensink/fixtures/kitchensink
+      - run: E2E_TEST='true' npx create-react-app ~/kitchensink/test-kitchensink --scripts-version=/home/circleci/kitchensink/jpavon-react-scripts-ts-0.7.0.tgz --internal-testing-template=/home/circleci/kitchensink/fixtures/kitchensink
       - run: cd ~/kitchensink/test-kitchensink && yarn test
       - run: cd ~/kitchensink/test-kitchensink && yarn e2e:dev
       - run: cd ~/kitchensink/test-kitchensink && yarn e2e:build
