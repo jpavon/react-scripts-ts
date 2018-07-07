@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 function load() {
   return [
@@ -17,7 +17,7 @@ function load() {
   ];
 }
 
-export default class extends Component {
+export default class extends React.Component {
   static propTypes = {
     onReady: PropTypes.func.isRequired,
   };
@@ -40,12 +40,10 @@ export default class extends Component {
     return (
       <div id="feature-object-destructuring">
         {this.state.users.map(user => {
-          const { id, name } = user;
-          return (
-            <div key={id}>
-              {name}
-            </div>
-          );
+          const { id, ...rest } = user;
+          // eslint-disable-next-line no-unused-vars
+          const [{ name, ...innerRest }] = [{ ...rest }];
+          return <div key={id}>{name}</div>;
         })}
       </div>
     );

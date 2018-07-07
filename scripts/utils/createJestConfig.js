@@ -73,7 +73,7 @@ module.exports = (resolve, rootDir) => {
     'coverageReporters',
     'coverageThreshold',
     'snapshotSerializers',
-    'moduleNameMapper'
+    'moduleNameMapper',
   ];
   if (overrides) {
     supportedKeys.forEach((key) => {

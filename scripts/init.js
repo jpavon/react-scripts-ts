@@ -46,6 +46,31 @@ module.exports = function(
     eject: 'react-scripts-ts eject',
   };
 
+  // Add additional scripts for testing
+  if (process.env.E2E_TEST === 'true') {
+    appPackage.scripts = {
+      ...appPackage.scripts,
+      "e2e:dev:test": "TEST_URL=http://localhost:3000 jest --config=./jest.e2e.config.js",
+      "e2e:dev": "start-server-and-test start http-get://localhost:3000 e2e:dev:test",
+      "serve": "react-scripts-ts build && serve -s build",
+      "e2e:build:test": "TEST_URL=http://localhost:5000 jest --config=./jest.e2e.config.js",
+      "e2e:build": "start-server-and-test serve http://localhost:5000 e2e:build:test"
+    };
+
+    appPackage.browserslist = {
+      "development": [
+        "last 2 chrome versions",
+        "last 2 firefox versions",
+        "last 2 edge versions"
+      ],
+      "production": [
+        ">0.1%",
+        "not op_mini all",
+        "ie 11"
+      ]
+    };
+  }
+
   fs.writeFileSync(
     path.join(appPath, 'package.json'),
     JSON.stringify(appPackage, null, 2)

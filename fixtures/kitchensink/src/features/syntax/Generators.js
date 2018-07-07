@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 function* load(limit) {
   let i = 1;
@@ -16,7 +16,7 @@ function* load(limit) {
   }
 }
 
-export default class extends Component {
+export default class extends React.Component {
   static propTypes = {
     onReady: PropTypes.func.isRequired,
   };
@@ -41,11 +41,7 @@ export default class extends Component {
   render() {
     return (
       <div id="feature-generators">
-        {this.state.users.map(user => (
-          <div key={user.id}>
-            {user.name}
-          </div>
-        ))}
+        {this.state.users.map(user => <div key={user.id}>{user.name}</div>)}
       </div>
     );
   }

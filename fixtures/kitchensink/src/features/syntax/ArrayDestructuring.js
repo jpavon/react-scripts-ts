@@ -5,14 +5,14 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 function load() {
   return [[1, '1'], [2, '2'], [3, '3'], [4, '4']];
 }
 
-export default class extends Component {
+export default class extends React.Component {
   static propTypes = {
     onReady: PropTypes.func.isRequired,
   };
@@ -36,11 +36,7 @@ export default class extends Component {
       <div id="feature-array-destructuring">
         {this.state.users.map(user => {
           const [id, name] = user;
-          return (
-            <div key={id}>
-              {name}
-            </div>
-          );
+          return <div key={id}>{name}</div>;
         })}
       </div>
     );

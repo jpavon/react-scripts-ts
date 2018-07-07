@@ -1,0 +1,5 @@
+#feature-svg-in-css {
+  width: 100px;
+  height: 60px;
+  background-image: url("./logo.svg");
+}

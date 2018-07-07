@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 const styled = ([style]) =>
   style
@@ -24,7 +24,7 @@ function load() {
   ];
 }
 
-export default class extends Component {
+export default class extends React.Component {
   static propTypes = {
     onReady: PropTypes.func.isRequired,
   };

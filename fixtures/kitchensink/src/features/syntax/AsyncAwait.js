@@ -5,8 +5,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 async function load() {
   return [
@@ -17,7 +17,17 @@ async function load() {
   ];
 }
 
-export default class extends Component {
+/* eslint-disable */
+// Regression test for https://github.com/facebook/create-react-app/issues/3055
+const x = async (
+  /* prettier-ignore */
+  y: void
+) => {
+  const z = await y;
+};
+/* eslint-enable */
+
+export default class extends React.Component {
   static propTypes = {
     onReady: PropTypes.func.isRequired,
   };
@@ -39,11 +49,7 @@ export default class extends Component {
   render() {
     return (
       <div id="feature-async-await">
-        {this.state.users.map(user => (
-          <div key={user.id}>
-            {user.name}
-          </div>
-        ))}
+        {this.state.users.map(user => <div key={user.id}>{user.name}</div>)}
       </div>
     );
   }

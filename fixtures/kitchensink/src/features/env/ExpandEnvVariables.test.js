@@ -5,13 +5,13 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import SvgInclusion from './SvgInclusion';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import ExpandEnvVariables from './ExpandEnvVariables';
 
-describe('svg inclusion', () => {
+describe('expand .env variables', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<SvgInclusion />, div);
+    ReactDOM.render(<ExpandEnvVariables />, div);
   });
 });

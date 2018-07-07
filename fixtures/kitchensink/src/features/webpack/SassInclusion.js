@@ -5,8 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import * as React from 'react';
+import './assets/sass-styles.sass';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export default () => <p id="feature-sass-inclusion">We love useless text.</p>;

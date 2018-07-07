@@ -5,7 +5,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React from 'react';
-import logo from './assets/logo.svg';
+import * as React from 'react';
+import Logo from './assets/logo.svg';
 
-export default () => <img id="feature-svg-inclusion" src={logo} alt="logo" />;
+export default () => <Logo id="feature-svg-component" title="Svg Title" />;
