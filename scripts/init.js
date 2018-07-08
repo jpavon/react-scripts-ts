@@ -50,10 +50,10 @@ module.exports = function(
   if (process.env.E2E_TEST === 'true') {
     appPackage.scripts = {
       ...appPackage.scripts,
-      "e2e:dev:test": "TEST_URL=http://localhost:3000 jest --config=./jest.e2e.config.js",
+      "e2e:dev:test": "TEST_URL=http://localhost:3000 jest --config=./jest.e2e.config.js --maxWorkers=2",
       "e2e:dev": "start-server-and-test start http-get://localhost:3000 e2e:dev:test",
       "serve": "react-scripts-ts build && serve -s build",
-      "e2e:build:test": "TEST_URL=http://localhost:5000 jest --config=./jest.e2e.config.js",
+      "e2e:build:test": "TEST_URL=http://localhost:5000 jest --config=./jest.e2e.config.js --maxWorkers=2",
       "e2e:build": "start-server-and-test serve http://localhost:5000 e2e:build:test"
     };
 

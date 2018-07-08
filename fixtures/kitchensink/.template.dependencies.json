@@ -1,8 +1,5 @@
 {
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "7.0.0-beta.46",
-    "@babel/polyfill": "7.0.0-beta.46",
-    "@babel/register": "7.0.0-beta.46",
     "bootstrap": "4.1.0",
     "normalize.css": "7.0.0",
     "@types/prop-types": "15.5.3",
