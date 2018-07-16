@@ -1,6 +1,6 @@
 ![react-scripts-ts](template/src/logo.svg)
 
-# react-scripts-ts
+# @jpavon/react-scripts-ts
 
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
 
