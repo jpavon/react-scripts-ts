@@ -3,6 +3,8 @@
 # @jpavon/react-scripts-ts
 
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
+[![CircleCI](https://circleci.com/gh/jpavon/react-scripts-ts/tree/master.svg?style=svg)](https://circleci.com/gh/jpavon/workflows/react-scripts-ts)
+
 
 > *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
