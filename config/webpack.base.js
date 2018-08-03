@@ -31,7 +31,9 @@ function getStyleLoader(options) {
   };
   if (isModules) {
     // css-loader drop-in replacement to generate TypeScript typings
-    cssLoader.loader = require.resolve('@jpavon/typings-for-css-modules-loader');
+    cssLoader.loader = require.resolve(
+      '@jpavon/typings-for-css-modules-loader'
+    );
     cssLoader.options.modules = true;
     cssLoader.options.getLocalIdent = getCSSModuleLocalIdent;
   }
@@ -85,6 +87,7 @@ const babelLoader = {
   options: {
     babelrc: false,
     presets: [require.resolve('@babel/preset-react')],
+    // plugins: ["babel-plugin-styled-components"],
     cacheDirectory: true,
     highlightCode: true
   }
@@ -127,7 +130,8 @@ module.exports.loaders = [
         loader: require.resolve('ts-loader'),
         options: {
           transpileOnly: true,
-          happyPackMode: true
+          happyPackMode: true,
+          getCustomTransformers: require.resolve('./webpack.ts-transformers.js')
         }
       }
     ]
@@ -144,12 +148,14 @@ module.exports.loaders = [
     test: /\.svg$/,
     exclude: /[\\/]node_modules[\\/]/,
     issuer: /\.(tsx?|jsx?)$/,
-    use: [{
-      loader: require.resolve('@svgr/webpack'),
-      options: {
-        titleProp: true
+    use: [
+      {
+        loader: require.resolve('@svgr/webpack'),
+        options: {
+          titleProp: true
+        }
       }
-    }]
+    ]
   },
   // "file" loader makes sure assets end up in the `build` folder.
   // When you `import` an asset, you get its filename.
