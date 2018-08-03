@@ -11,7 +11,7 @@
     "url": "https://github.com/jpavon/react-scripts-ts/issues"
   },
   "scripts": {
-    "rename": "renamer --regex --find '(\\-)(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)' --replace '' './*.tgz'",
+    "rename": "renamer --find '/(\\-)(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)/' --replace '' './*.tgz'",
     "pack": "npm pack",
     "pack:rename": "npm-run-all --sequential pack rename"
   },
