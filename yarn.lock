@@ -1115,7 +1115,7 @@
   version "7.0.0-beta.55"
   resolved "https://registry.yarnpkg.com/@babel/preset-stage-0/-/preset-stage-0-7.0.0-beta.55.tgz#feb61a4a47e697083b3121e6ad926ae4638b75ec"
 
-"@babel/runtime@^7.0.0-beta.55":
+"@babel/runtime@7.0.0-beta.55":
   version "7.0.0-beta.55"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.0.0-beta.55.tgz#0bc33aa5a6ac0b012f37e25b9e6aaa2e489a916b"
   dependencies:
