@@ -22,7 +22,10 @@ module.exports = (resolve, rootDir) => {
   // in Jest configs. We need help from somebody with Windows to determine this.
   const config = {
     collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
-    setupFiles: [resolve('config/polyfills.js')],
+    setupFiles: [
+      resolve('config/polyfills.js'),
+      resolve('config/jest/localStoragePolyfill.js')
+    ],
     setupTestFrameworkScriptFile: setupTestsFile,
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)',
@@ -73,7 +76,7 @@ module.exports = (resolve, rootDir) => {
     'coverageReporters',
     'coverageThreshold',
     'snapshotSerializers',
-    'moduleNameMapper',
+    'moduleNameMapper'
   ];
   if (overrides) {
     supportedKeys.forEach((key) => {
