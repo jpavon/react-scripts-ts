@@ -11,7 +11,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
@@ -71,8 +71,8 @@ module.exports = {
   },
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
+      new TerserPlugin({
+        terserOptions: {
           parse: {
             // we want uglify-js to parse ecma 8 code. However, we don't want it
             // to apply any minfication steps that turns valid ecma 5 code
@@ -109,19 +109,22 @@ module.exports = {
         sourceMap: shouldUseSourceMap
       }),
       new OptimizeCSSAssetsPlugin()
-    ]
-    // Use splitChunks when this issue is fixed:
-    // https://github.com/webpack/webpack/issues/7300
-
+    ],
     // Automatically split vendor and commons
     // https://twitter.com/wSokra/status/969633336732905474
     // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    // splitChunks: {
-    //   chunks: 'all'
-    // },
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
+    },
     // Keep the runtime chunk seperated to enable long term caching
     // https://twitter.com/wSokra/status/969679223278505985
-    // runtimeChunk: true,
+    runtimeChunk: true,
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
@@ -152,14 +155,6 @@ module.exports = {
       '.scss'
     ],
     alias: {
-      // @remove-on-eject-begin
-      // Resolve Babel runtime relative to react-scripts.
-      // It usually still works on npm 3 without this but it would be
-      // unfortunate to rely on, as react-scripts could be symlinked,
-      // and thus babel-runtime might not be resolvable from the source.
-      '@babel/runtime': path.dirname(
-        require.resolve('@babel/runtime/package.json')
-      ),
       // @remove-on-eject-end
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/

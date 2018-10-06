@@ -44,8 +44,11 @@ function getStyleLoader(options) {
       ident: 'postcss',
       plugins: () => [
         require('postcss-flexbugs-fixes'),
-        autoprefixer({
-          flexbox: 'no-2009'
+        require('postcss-preset-env')({
+          autoprefixer: {
+            flexbox: 'no-2009'
+          },
+          stage: 3
         })
       ],
       sourceMap: shouldUseSourceMap
@@ -89,7 +92,7 @@ const babelLoader = {
     presets: [require.resolve('@babel/preset-react')],
     // plugins: ["babel-plugin-styled-components"],
     cacheDirectory: true,
-    highlightCode: true
+    cacheCompression: false
   }
 };
 
