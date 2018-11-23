@@ -40,7 +40,6 @@ const formatWebpackMessages = require('react-dev-utils/formatWebpackMessages');
 const printHostingInstructions = require('react-dev-utils/printHostingInstructions');
 const FileSizeReporter = require('react-dev-utils/FileSizeReporter');
 const printBuildError = require('react-dev-utils/printBuildError');
-const { printBrowsers } = require('react-dev-utils/browsersHelper');
 
 const measureFileSizesBeforeBuild =
   FileSizeReporter.measureFileSizesBeforeBuild;
@@ -113,7 +112,6 @@ checkBrowsers(paths.appPath)
         buildFolder,
         paths.useYarn
       );
-      printBrowsers(paths.appPath);
     },
     err => {
       console.log(chalk.red('Failed to compile.\n'));
