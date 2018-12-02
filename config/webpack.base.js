@@ -90,7 +90,7 @@ const babelLoader = {
   options: {
     babelrc: false,
     presets: [require.resolve('@babel/preset-react')],
-    // plugins: ["babel-plugin-styled-components"],
+    plugins: [require.resolve("@babel/plugin-syntax-dynamic-import")],
     cacheDirectory: true,
     cacheCompression: false
   }
