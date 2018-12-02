@@ -13,10 +13,10 @@ function getStyleLoader(options) {
   const isModules = options && options.modules;
 
   let styleRegex = /\.css$/;
-  let styleModuleRegex = /\.module\.css$/;
+  let styleModuleRegex = /\.(module|m)\.css$/;
   if (isSass) {
     styleRegex = /\.(scss|sass)$/;
-    styleModuleRegex = /\.module\.(scss|sass)$/;
+    styleModuleRegex = /\.(module|m)\.(scss|sass)$/;
   }
 
   const styleLoader = require.resolve('style-loader');
