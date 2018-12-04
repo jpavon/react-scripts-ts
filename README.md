@@ -1,4 +1,4 @@
-![react-scripts-ts](template/src/logo.svg)
+## ![react-scripts-ts](template/src/logo.svg)&nbsp;&nbsp;&nbsp;<span>+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/remojansen/logo.ts/raw/master/ts.png"  width="70" height="70" />
 
 # @jpavon/react-scripts-ts
 
@@ -8,7 +8,7 @@
 
 > *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
-Fork of [react-script-ts](https://github.com/wmonk/create-react-app-typescript) with added features.
+Fork of [react-scripts](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts) with ts-loader and type checker on a separate process.
 
 Found any problem or bug? Please [create a new issue](https://github.com/jpavon/react-scripts-ts/issues).
 
