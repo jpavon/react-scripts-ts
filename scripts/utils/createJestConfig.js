@@ -21,31 +21,33 @@ module.exports = (resolve, rootDir) => {
   // TODO: I don't know if it's safe or not to just use / as path separator
   // in Jest configs. We need help from somebody with Windows to determine this.
   const config = {
-    collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+    collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}', '!src/**/*.d.ts'],
     setupFiles: [
       resolve('config/polyfills.js'),
       resolve('config/jest/localStoragePolyfill.js')
     ],
     setupTestFrameworkScriptFile: setupTestsFile,
     testMatch: [
-      '<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)',
-      '<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)'
+      '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
+      '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
     ],
-    testEnvironment: 'node',
+    testEnvironment: 'jsdom',
     testURL: 'http://localhost',
     transform: {
-      '\\.(tsx?|js|jsx|mjs)$': resolve('config/jest/typescriptTransform.js'),
+      '^.+\\.(js|jsx|ts|tsx)$': resolve('config/jest/typescriptTransform.js'),
+      '^.+\\.css$': resolve('config/jest/cssTransform.js'),
       '\\.(jpg|jpeg|png|gif|eot|otf|webp|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': resolve(
         'config/jest/fileTransform.js'
       )
     },
     transformIgnorePatterns: [
-      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$'
+      '[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
+      '^.+\\.module\\.(css|sass|scss)$',
     ],
     moduleNameMapper: {
-      'react-native$': 'react-native-web',
-      '\\.(svg)$': resolve('config/jest/svgMock.js'),
-      '\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy'
+      '^react-native$': 'react-native-web',
+      '^.+\\.(svg)$': resolve('config/jest/svgMock.js'),
+      '^.+\\.(css|styl|less|sass|scss)$': 'identity-obj-proxy'
     },
     modulePaths: [resolve('node_modules'), '<rootDir>/src'],
     moduleFileExtensions: [
