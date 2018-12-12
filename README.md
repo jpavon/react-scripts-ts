@@ -1,16 +1,23 @@
-## ![react-scripts-ts](template/src/logo.svg)&nbsp;&nbsp;&nbsp;<span>+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/remojansen/logo.ts/raw/master/ts.png"  width="70" height="70" />
-
-# @jpavon/react-scripts-ts
+## ![react-scripts-ts](template/src/logo.svg)&nbsp;&nbsp;&nbsp;<span>+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/remojansen/logo.ts/raw/master/ts.png"  width="70" height="70" />
 
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
 [![CircleCI](https://circleci.com/gh/jpavon/react-scripts-ts/tree/master.svg?style=svg)](https://circleci.com/gh/jpavon/workflows/react-scripts-ts)
 
 
-> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
+# @jpavon/react-scripts-ts
 
-Fork of [react-scripts](https://github.com/facebook/create-react-app/tree/master/packages/react-scripts) with ts-loader and type checker on a separate process.
+Modern build setup with no configuration for React + TypeScript projects.
+
+### Differences with create react app:
+
+- [Namespaces support](https://www.typescriptlang.org/docs/handbook/namespaces.html)
+- [Module resolution support (baseUrl/paths)](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
+- Type checking	on a separate proccess
+- Transpilation using [ts-loader](https://github.com/TypeStrong/ts-loader)
 
 Found any problem or bug? Please [create a new issue](https://github.com/jpavon/react-scripts-ts/issues).
+
+> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
 ## Features
 
@@ -24,9 +31,9 @@ Found any problem or bug? Please [create a new issue](https://github.com/jpavon/
 
 Check out the [template files](template) for usage examples.
 
-## Add it to your project
+# Getting started
 
-### New project
+## Create a new project:
 
 ```bash
 npx create-react-app my-app --scripts-version=@jpavon/react-scripts-ts
@@ -35,7 +42,9 @@ yarn start
 ```
 (npx comes with npm 5.2+ and higher)
 
-#### Already using create-react-app?
+## Already using create-react-app / react-scripts?
+
+Install this package in yout project:
 
 ```bash
 yarn add @jpavon/react-scripts-ts
@@ -49,6 +58,24 @@ Change your package.json configuration to use react-scripts-ts
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
+  }
+}
+```
+
+# Ejecting
+
+Ejecting is not supported in this project, you have 2 options:
+
+- Fork this project and create your own react-scripts-ts package.
+
+- Use [react-app-rewired](https://github.com/timarney/react-app-rewired) with [custom scripts versions](https://github.com/timarney/react-app-rewired#2-custom-scripts-versions):
+
+```json
+{
+  "scripts": {
+    "start": "react-app-rewired start --scripts-version @jpavon/react-scripts-ts",
+    "build": "react-app-rewired build --scripts-version @jpavon/react-scripts-ts",
+    "test": "react-app-rewired test --scripts-version @jpavon/react-scripts-ts --env=jsdom"
   }
 }
 ```
