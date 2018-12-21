@@ -88,6 +88,7 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "renamer": "^1.1.1",
+    "standard-version": "^4.4.0",
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
