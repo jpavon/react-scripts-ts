@@ -8,12 +8,13 @@
 
 Modern build setup with no configuration for React + TypeScript projects.
 
-### Differences with create react app:
+### Main differences with create react app:
 
 - [Namespaces support](https://www.typescriptlang.org/docs/handbook/namespaces.html)
 - [Module resolution support (baseUrl/paths)](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
 - Type checking	on a separate proccess
 - Transpilation using [ts-loader](https://github.com/TypeStrong/ts-loader)
+- Provide compile-time information for styled components [typescript-plugin-styled-components](https://github.com/Igorbek/typescript-plugin-styled-components)
 
 Found any problem or bug? Please [create a new issue](https://github.com/jpavon/react-scripts-ts/issues).
 
