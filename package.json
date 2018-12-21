@@ -1,6 +1,6 @@
 {
   "name": "@jpavon/react-scripts-ts",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Fork of react-scripts-ts with added features.",
   "repository": "jpavon/react-scripts-ts",
   "license": "MIT",
@@ -13,7 +13,8 @@
   "scripts": {
     "rename": "renamer --find '/(\\-)(\\d+\\.)?(\\d+\\.)?(\\*|\\d+)/' --replace '' './*.tgz'",
     "pack": "npm pack",
-    "pack:rename": "npm-run-all --sequential pack rename"
+    "pack:rename": "npm-run-all --sequential pack rename",
+    "release": "standard-version"
   },
   "files": [
     "bin",
