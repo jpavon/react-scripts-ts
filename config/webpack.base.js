@@ -80,6 +80,8 @@ function getStyleLoader(options) {
 const threadLoader = {
   loader: require.resolve('thread-loader'),
   options: {
+    // there should be 1 cpu for the fork-ts-checker-webpack-plugin
+    workers: require('os').cpus().length - 1,
     // keep workers alive on dev for more effective watch mode
     poolTimeout: isProduction ? 500 : Infinity
   }

@@ -180,7 +180,8 @@ module.exports = {
     new ForkTsCheckerWebpackPlugin({
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
-      watch: [paths.appSrc]
+      watch: [paths.appSrc],
+      checkSyntacticErrors: true
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
