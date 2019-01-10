@@ -1,6 +1,6 @@
 {
   "name": "@jpavon/react-scripts-ts",
-  "version": "0.11.2",
+  "version": "1.0.0",
   "description": "Fork of react-scripts-ts with added features.",
   "repository": "jpavon/react-scripts-ts",
   "license": "MIT",
