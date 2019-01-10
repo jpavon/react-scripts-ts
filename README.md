@@ -1,8 +1,8 @@
 ## ![react-scripts-ts](template/src/logo.svg)&nbsp;&nbsp;&nbsp;<span>+</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/remojansen/logo.ts/raw/master/ts.png"  width="70" height="70" />
 
+![License](https://img.shields.io/github/license/jpavon/react-scripts-ts.svg)
 [![NPM](https://img.shields.io/npm/v/@jpavon/react-scripts-ts.svg)](https://www.npmjs.com/package/@jpavon/react-scripts-ts)
-[![CircleCI](https://circleci.com/gh/jpavon/react-scripts-ts/tree/master.svg?style=svg)](https://circleci.com/gh/jpavon/workflows/react-scripts-ts)
-
+[![CircleCI Status](https://circleci.com/gh/jpavon/react-scripts-ts.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/jpavon/react-scripts-ts)
 
 # @jpavon/react-scripts-ts
 
@@ -10,6 +10,7 @@ Modern build setup with no configuration for React + TypeScript projects.
 
 ### Main differences with create react app:
 
+- [Faster build times](https://github.com/jpavon/react-scripts-ts/issues/7#issue-394549780)
 - [Namespaces support](https://www.typescriptlang.org/docs/handbook/namespaces.html)
 - [Module resolution support (baseUrl/paths)](https://www.typescriptlang.org/docs/handbook/module-resolution.html)
 - Type checking	on a separate proccess
@@ -17,8 +18,6 @@ Modern build setup with no configuration for React + TypeScript projects.
 - Provide compile-time information for styled components [typescript-plugin-styled-components](https://github.com/Igorbek/typescript-plugin-styled-components)
 
 Found any problem or bug? Please [create a new issue](https://github.com/jpavon/react-scripts-ts/issues).
-
-> *Note: Until 1.0.0 this project won't follow semver. Though there won't be many breaking changes, update at your own risk.*
 
 ## Features
 
