@@ -181,7 +181,9 @@ module.exports = {
       tsconfig: paths.appTsConfig,
       tslint: paths.appTsLint,
       watch: [paths.appSrc],
-      checkSyntacticErrors: true
+      checkSyntacticErrors: true,
+      async: true,
+      useTypescriptIncrementalApi: true
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
