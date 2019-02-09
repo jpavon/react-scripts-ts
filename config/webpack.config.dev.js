@@ -21,6 +21,7 @@ const { loaders } = require('./webpack.base');
 
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -183,7 +184,8 @@ module.exports = {
       watch: [paths.appSrc],
       checkSyntacticErrors: true,
       async: true,
-      useTypescriptIncrementalApi: true
+      useTypescriptIncrementalApi: true,
+      formatter: typescriptFormatter
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
