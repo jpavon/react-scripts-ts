@@ -10,6 +10,7 @@ const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 function getStyleLoader(options) {
   const isSass = options && options.sass;
+  const isLess = options && options.less;
   const isModules = options && options.modules;
 
   let styleRegex = /\.css$/;
@@ -17,6 +18,11 @@ function getStyleLoader(options) {
   if (isSass) {
     styleRegex = /\.(scss|sass)$/;
     styleModuleRegex = /\.(module|m)\.(scss|sass)$/;
+  }
+
+  if (isLess) {
+    styleRegex = /\.(less)$/;
+    styleModuleRegex = /\.(module|m).less$/;
   }
 
   const styleLoader = require.resolve('style-loader');
@@ -68,6 +74,13 @@ function getStyleLoader(options) {
         sourceMap: shouldUseSourceMap
       }
     });
+  }
+
+  if(isLess) {
+     loaders.push({
+       loader: require.resolve('less-loader'),
+       options: { javascriptEnabled: true }
+     });
   }
 
   return {
@@ -145,10 +158,14 @@ module.exports.loaders = [
   getStyleLoader(),
   // Process Sass
   getStyleLoader({ sass: true }),
+  // Process Less
+  getStyleLoader({ less: true }),
   // Process Css Modules
   getStyleLoader({ modules: true }),
   // Process Sass Modules
   getStyleLoader({ sass: true, modules: true }),
+  // Process Less Modules
+  getStyleLoader({ less: true, modules: true }),
   {
     test: /\.svg$/,
     exclude: /[\\/]node_modules[\\/]/,
