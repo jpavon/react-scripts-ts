@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/jpavon/react-scripts-ts/compare/v1.1.2...v1.2.0) (2019-02-10)
+
+
+### Bug Fixes
+
+* use async false until new react-dev-utils version that should fix async true ([8fb5ab0](https://github.com/jpavon/react-scripts-ts/commit/8fb5ab0))
+
+
+### Features
+
+* add support for less and less modules ([5f512f2](https://github.com/jpavon/react-scripts-ts/commit/5f512f2)), closes [#12](https://github.com/jpavon/react-scripts-ts/issues/12)
+
+
+
 <a name="1.1.2"></a>
 ## [1.1.2](https://github.com/jpavon/react-scripts-ts/compare/v1.1.0...v1.1.2) (2019-02-09)
 
