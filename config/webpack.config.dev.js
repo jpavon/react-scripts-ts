@@ -183,7 +183,7 @@ module.exports = {
       tslint: paths.appTsLint,
       watch: [paths.appSrc],
       checkSyntacticErrors: true,
-      async: true,
+      async: false,
       useTypescriptIncrementalApi: true,
       formatter: typescriptFormatter
     })
