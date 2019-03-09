@@ -19,7 +19,7 @@ const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const { loaders } = require('./webpack.base');
 
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
@@ -183,7 +183,7 @@ module.exports = {
       tslint: paths.appTsLint,
       watch: [paths.appSrc],
       checkSyntacticErrors: true,
-      async: false,
+      async: true,
       useTypescriptIncrementalApi: true,
       formatter: typescriptFormatter
     })
