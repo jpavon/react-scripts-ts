@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.2](https://github.com/jpavon/react-scripts-ts/compare/v1.2.1...v1.2.2) (2019-03-16)
+
+
+### Bug Fixes
+
+* revert to eval-source-map https://github.com/facebook/create-react-app/pull/6444 ([043b9c2](https://github.com/jpavon/react-scripts-ts/commit/043b9c2))
+
+
+
 ## [1.2.1](https://github.com/jpavon/react-scripts-ts/compare/v1.2.0...v1.2.1) (2019-03-09)
 
 
