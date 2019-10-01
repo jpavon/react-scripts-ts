@@ -15,7 +15,7 @@ module.exports = (resolve, rootDir) => {
   // Use this instead of `paths.testsSetup` to avoid putting
   // an absolute filename into configuration after ejecting.
   const setupTestsFile = fs.existsSync(paths.testsSetup)
-    ? '<rootDir>/src/setupTests.ts'
+    ? ['<rootDir>/src/setupTests.ts']
     : undefined;
 
   // TODO: I don't know if it's safe or not to just use / as path separator
@@ -26,7 +26,7 @@ module.exports = (resolve, rootDir) => {
       resolve('config/polyfills.js'),
       resolve('config/jest/localStoragePolyfill.js')
     ],
-    setupTestFrameworkScriptFile: setupTestsFile,
+    setupFilesAfterEnv: setupTestsFile,
     testMatch: [
       '<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}',
       '<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}',
