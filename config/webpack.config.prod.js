@@ -63,66 +63,68 @@ module.exports = {
     // Generated JS file names (with nested folders).
     // There will be one main bundle, and one file per asynchronous chunk.
     // We don't currently advertise code splitting but Webpack supports it.
-    filename: 'static/js/[name].[chunkhash:8].js',
-    chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
+    filename: 'static/js/[name].js',
+    libraryTarget: 'amd',
+    library: 'legacy',
+    // chunkFilename: 'static/js/[name].[chunkhash:8].chunk.js',
     // We inferred the "public path" (such as / or /my-project) from homepage.
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: (info) =>
       path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/')
   },
-  optimization: {
-    minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          parse: {
-            // we want uglify-js to parse ecma 8 code. However, we don't want it
-            // to apply any minfication steps that turns valid ecma 5 code
-            // into invalid ecma 5 code. This is why the 'compress' and 'output'
-            // sections only apply transformations that are ecma 5 safe
-            // https://github.com/facebook/create-react-app/pull/4234
-            ecma: 8
-          },
-          compress: {
-            ecma: 5,
-            warnings: false,
-            // Disabled because of an issue with Uglify breaking seemingly valid code:
-            // https://github.com/facebook/create-react-app/issues/2376
-            // Pending further investigation:
-            // https://github.com/mishoo/UglifyJS2/issues/2011
-            comparisons: false
-          },
-          mangle: {
-            safari10: true
-          },
-          output: {
-            ecma: 5,
-            comments: false,
-            // Turned on because emoji and regex is not minified properly using default
-            // https://github.com/facebook/create-react-app/issues/2488
-            ascii_only: true
-          }
-        },
-        // Use multi-process parallel running to improve the build speed
-        // Default number of concurrent runs: os.cpus().length - 1
-        parallel: true,
-        // Enable file caching
-        cache: true,
-        sourceMap: shouldUseSourceMap
-      }),
-      new OptimizeCSSAssetsPlugin()
-    ],
-    // Automatically split vendor and commons
-    // https://twitter.com/wSokra/status/969633336732905474
-    // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
-    splitChunks: {
-      chunks: 'all',
-      name: false,
-    },
-    // Keep the runtime chunk seperated to enable long term caching
-    // https://twitter.com/wSokra/status/969679223278505985
-    runtimeChunk: true,
-  },
+  // optimization: {
+  //   minimizer: [
+  //     new TerserPlugin({
+  //       terserOptions: {
+  //         parse: {
+  //           // we want uglify-js to parse ecma 8 code. However, we don't want it
+  //           // to apply any minfication steps that turns valid ecma 5 code
+  //           // into invalid ecma 5 code. This is why the 'compress' and 'output'
+  //           // sections only apply transformations that are ecma 5 safe
+  //           // https://github.com/facebook/create-react-app/pull/4234
+  //           ecma: 8
+  //         },
+  //         compress: {
+  //           ecma: 5,
+  //           warnings: false,
+  //           // Disabled because of an issue with Uglify breaking seemingly valid code:
+  //           // https://github.com/facebook/create-react-app/issues/2376
+  //           // Pending further investigation:
+  //           // https://github.com/mishoo/UglifyJS2/issues/2011
+  //           comparisons: false
+  //         },
+  //         mangle: {
+  //           safari10: true
+  //         },
+  //         output: {
+  //           ecma: 5,
+  //           comments: false,
+  //           // Turned on because emoji and regex is not minified properly using default
+  //           // https://github.com/facebook/create-react-app/issues/2488
+  //           ascii_only: true
+  //         }
+  //       },
+  //       // Use multi-process parallel running to improve the build speed
+  //       // Default number of concurrent runs: os.cpus().length - 1
+  //       parallel: true,
+  //       // Enable file caching
+  //       cache: true,
+  //       sourceMap: shouldUseSourceMap
+  //     }),
+  //     new OptimizeCSSAssetsPlugin()
+  //   ],
+  //   // Automatically split vendor and commons
+  //   // https://twitter.com/wSokra/status/969633336732905474
+  //   // https://medium.com/webpack/webpack-4-code-splitting-chunk-graph-and-the-splitchunks-optimization-be739a861366
+  //   splitChunks: {
+  //     chunks: 'all',
+  //     name: false,
+  //   },
+  //   // Keep the runtime chunk seperated to enable long term caching
+  //   // https://twitter.com/wSokra/status/969679223278505985
+  //   runtimeChunk: true,
+  // },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.
     // We placed these paths second because we want `node_modules` to "win"
@@ -171,7 +173,7 @@ module.exports = {
     strictExportPresence: true,
     rules: [
       // Disable require.ensure as it's not a standard language feature.
-      { parser: { requireEnsure: false } },
+      { parser: { requireEnsure: false, system: false } },
       {
         // "oneOf" will traverse all following loaders until one will
         // match the requirements. When no loader matches it will fall
@@ -182,28 +184,28 @@ module.exports = {
   },
   plugins: [
     // Generates an `index.html` file with the <script> injected.
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: paths.appHtml,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true
-      }
-    }),
+    // new HtmlWebpackPlugin({
+    //   inject: true,
+    //   template: paths.appHtml,
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //     removeRedundantAttributes: true,
+    //     useShortDoctype: true,
+    //     removeEmptyAttributes: true,
+    //     removeStyleLinkTypeAttributes: true,
+    //     keepClosingSlash: true,
+    //     minifyJS: true,
+    //     minifyCSS: true,
+    //     minifyURLs: true
+    //   }
+    // }),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
     // In production, it will be an empty string unless you specify "homepage"
     // in `package.json`, in which case it will be the pathname of that URL.
-    new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
+    // new InterpolateHtmlPlugin(HtmlWebpackPlugin, env.raw),
     // Makes some environment variables available to the JS code, for example:
     // if (process.env.NODE_ENV === 'production') { ... }. See `./env.js`.
     // It is absolutely essential that NODE_ENV was set to production here.
@@ -212,8 +214,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: 'static/css/[name].[contenthash:8].css',
-      chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
+      filename: 'static/css/[name].css',
+      // chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
