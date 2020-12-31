@@ -185,7 +185,9 @@ module.exports = {
       checkSyntacticErrors: true,
       async: true,
       useTypescriptIncrementalApi: true,
-      formatter: typescriptFormatter
+      formatter: typescriptFormatter,
+      // manage memoryLimit
+      memoryLimit: 4096,
     })
   ],
   // Some libraries import Node modules but don't use them in the browser.
