@@ -48,6 +48,7 @@ function getServedPath(appPackageJson) {
 
 // config after eject: we're in ./config/
 module.exports = {
+  proxySetup: resolveApp('src/setupProxy.js'),
   dotenv: resolveApp('.env'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
@@ -69,6 +70,7 @@ const resolveOwn = relativePath => path.resolve(__dirname, '..', relativePath);
 
 // config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
+  proxySetup: resolveApp('src/setupProxy.js'),
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
@@ -101,6 +103,7 @@ if (
   __dirname.indexOf(path.join('packages', 'react-scripts', 'config')) !== -1
 ) {
   module.exports = {
+    proxySetup: resolveApp('src/setupProxy.js'),
     dotenv: resolveOwn('template/.env'),
     appPath: resolveApp('.'),
     appBuild: resolveOwn('../../build'),
